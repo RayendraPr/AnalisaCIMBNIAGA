@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Intelijen & Strategi Komunikasi CIMB Niaga (2025-2026)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 CDN (Font-based icons, no SVG markup) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cimb: {
+                            red: '#8B0000',
+                            darkred: '#660000',
+                            lightred: '#fef2f2',
+                            accent: '#dc2626'
+                        },
+                        slate: {
+                            850: '#152032',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Chosen Palette: Harmonious Slate & Crimson Gold -->
+    <!-- Application Structure Plan: Interactive intelligence dashboard & strategy simulator featuring 8 analytical modules: Executive Overview with Key Metrics, Business Context & Financials, 10 Categorized Issues Explorer, Fact/Signal/Hypothesis Radar, 5 Communication Gap Models, 10 Content Opportunities & Agency Offerings, Audience Persona Matrix, 3-Zone Reputational Risk Heatmap, and an Interactive Agency Pitch Builder for CorCom Head Hery Kurniawan. Designed to allow strategic communication consultants and client intelligence analysts to dissect CIMB Niaga's situation and generate actionable proposal decks on-demand. -->
+    <!-- Visualization & Content Choices: 1. Mindshare & Digital Performance -> Bar Chart (Chart.js canvas) -> Interactive comparison of OCTO Mobile vs competitors -> Proves mindshare deficit -> Chart.js; 2. Financial & Portfolio Breakdown -> Doughnut Chart (Chart.js canvas) -> Portfolio distribution (Credit, CASA, Syariah, Green Financing) -> Demonstrates business volume -> Chart.js; 3. Issue & Risk Spectrum -> Radar/Bar Chart (Chart.js canvas) -> Visualizing risk density across categories -> Categorical clarity -> Chart.js; 4. Interactive Cards & Filter Tabs -> Dynamic JS DOM updates -> Filter issues, signals, gaps, and agency content solutions -> Enhances exploration and usability without page reload. CONFIRMATION: NO SVG elements or Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 380px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-cimb-red selection:text-white">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-md border-b border-red-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-cimb-red flex items-center justify-center font-bold text-xl text-white shadow-lg border border-red-400/30">
+                        <i class="fa-solid me-0 fa-building-columns"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-base tracking-wide flex items-center gap-2">
+                            CIMB NIAGA <span class="text-xs bg-red-900/80 text-red-200 px-2 py-0.5 rounded font-mono uppercase tracking-wider border border-red-700/50">2025-2026 Strategy</span>
+                        </div>
+                        <div class="text-xs text-slate-400">Client Intelligence & Strategic Communication Dashboard</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-1 text-xs font-medium">
+                    <a href="#overview" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"><i class="fa-solid fa-chart-pie mr-1.5 text-red-400"></i>Ringkasan Eksekutif</a>
+                    <a href="#issues" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"><i class="fa-solid fa-triangle-exclamation mr-1.5 text-amber-400"></i>10 Isu Utama</a>
+                    <a href="#signals" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"><i class="fa-solid fa-satellite-dish mr-1.5 text-blue-400"></i>Sinyal & Fakta</a>
+                    <a href="#gaps" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"><i class="fa-solid fa-bridge mr-1.5 text-purple-400"></i>Communication Gap</a>
+                    <a href="#solutions" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"><i class="fa-solid fa-lightbulb mr-1.5 text-yellow-400"></i>Peluang Konten</a>
+                    <a href="#risks" class="px-3 py-2 rounded-md hover:bg-slate-800 transition text-slate-300 hover:text-white"><i class="fa-solid fa-shield-halved mr-1.5 text-emerald-400"></i>Risk Map</a>
+                </nav>
+
+                <div class="flex items-center gap-2">
+                    <a href="#pitch-builder" class="bg-gradient-to-r from-cimb-red to-red-700 hover:from-red-700 hover:to-cimb-darkred text-white text-xs font-bold px-3.5 py-2 rounded-lg shadow-md transition flex items-center gap-2 border border-red-500/30">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Pitch Simulator</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Header Summary Banner -->
+    <section class="bg-slate-900 text-white py-8 border-b border-slate-800 relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-cimb-red/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-8 space-y-3">
+                    <div class="inline-flex items-center gap-2 bg-red-950/80 border border-red-800/60 text-red-300 px-3 py-1 rounded-full text-xs font-semibold">
+                        <i class="fa-solid fa-user-tie"></i>
+                        Target Klien: Hery Kurniawan (SVP Corporate Communications Head)
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                        Dokumen Intelijen Klien & Simulator Pendekatan Bisnis Agensi Media
+                    </h1>
+                    <p class="text-slate-300 text-sm leading-relaxed max-w-3xl">
+                        Aplikasi interaktif ini mengkonsolidasikan seluruh aspek bisnis, kinerja keuangan, krisis reputasi (seperti 1.363 rekening judol & downtime), kewajiban regulasi spin-off UUS Syariah, ketertinggalan mindshare OCTO Mobile (3.2%), hingga 10 peluang solusi konten strategis untuk PT Bank CIMB Niaga Tbk.
+                    </p>
+                </div>
+                <div class="lg:col-span-4 bg-slate-850 p-4 rounded-xl border border-slate-700/60 shadow-inner">
+                    <div class="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2">Target Hasil Pendekatan</div>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-start gap-2 text-slate-200">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                            <span>Reposisi Komunikasi Korporat dari Reputasi murni ke <strong>Konversi Dampak Bisnis</strong>.</span>
+                        </div>
+                        <div class="flex items-start gap-2 text-slate-200">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                            <span>Penawaran layanan Crisis Retainer, ESG Storytelling & Syariah Change Management.</span>
+                        </div>
+                        <div class="flex items-start gap-2 text-slate-200">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5"></i>
+                            <span>Peningkatan Mindshare OCTO Mobile & Akuisisi Nasabah Ritel Baru.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- SECTION 1: Ringkasan Eksekutif & Metrik Kunci -->
+        <section id="overview" class="scroll-mt-20 space-y-6">
+            <div class="border-l-4 border-cimb-red pl-4">
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-cimb-red"></i>
+                    I. Context & Key Performance Indicators (2025-2026)
+                </h2>
+                <p class="text-slate-600 text-xs mt-1">
+                    Sekilas gambaran kesehatan finansial, skala operasional, dan angka kritis yang menjadi fondasi argumen komunikasi.
+                </p>
+            </div>
+
+            <!-- Key Metric Cards Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 transition">
+                    <div class="text-slate-500 text-xs font-medium">Laba Sebelum Pajak</div>
+                    <div class="text-lg font-bold text-slate-900 mt-1">Rp 8,8 T</div>
+                    <div class="text-[10px] text-emerald-600 font-semibold mt-0.5"><i class="fa-solid fa-arrow-up"></i> Konsolidasi 2025</div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 transition">
+                    <div class="text-slate-500 text-xs font-medium">Total Kredit</div>
+                    <div class="text-lg font-bold text-slate-900 mt-1">Rp 238,3 T</div>
+                    <div class="text-[10px] text-emerald-600 font-semibold mt-0.5"><i class="fa-solid fa-arrow-up"></i> +4,5% YoY</div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 transition">
+                    <div class="text-slate-500 text-xs font-medium">Himpunan CASA</div>
+                    <div class="text-lg font-bold text-slate-900 mt-1">Rp 189,5 T</div>
+                    <div class="text-[10px] text-emerald-600 font-semibold mt-0.5"><i class="fa-solid fa-arrow-up"></i> +10,1% YoY</div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 transition">
+                    <div class="text-slate-500 text-xs font-medium">Finansial Hijau (ESG)</div>
+                    <div class="text-lg font-bold text-emerald-700 mt-1">Rp 66,0 T</div>
+                    <div class="text-[10px] text-slate-500 font-medium mt-0.5">26,7% Total Kredit</div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 transition">
+                    <div class="text-slate-500 text-xs font-medium">Rekening Judol Blokir</div>
+                    <div class="text-lg font-bold text-red-600 mt-1">1.363 Akun</div>
+                    <div class="text-[10px] text-red-600 font-semibold mt-0.5"><i class="fa-solid fa-triangle-exclamation"></i> Rilis Komdigi</div>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 transition">
+                    <div class="text-slate-500 text-xs font-medium">Mindshare OCTO</div>
+                    <div class="text-lg font-bold text-amber-600 mt-1">3,20%</div>
+                    <div class="text-[10px] text-slate-500 font-medium mt-0.5">vs BCA (50%) & BRI (22%)</div>
+                </div>
+            </div>
+
+            <!-- Context Overview & Charts Split -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Text Narrative -->
+                <div class="lg:col-span-6 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2 border-b border-slate-100 pb-2">
+                        <i class="fa-solid fa-compass text-cimb-red"></i>
+                        Mandat Bisnis & Lanskap Strategis 12-24 Bulan
+                    </h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        PT Bank CIMB Niaga Tbk (KBMI 3) beroperasi berdasarkan filosofi panduan <strong>"Advancing Customers and Society"</strong>. Dengan pemegang saham mayoritas CIMB Group Holdings Berhad Malaysia (~92,5%), perseroan didorong oleh Lima Pilar Strategi bisnis yang menitikberatkan pada perluasan basis nasabah, digitalisasi branchless, serta efisiensi operasional (CIR berhasil ditekan dari 48,95% ke 44,32%).
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs space-y-2">
+                        <div class="font-semibold text-slate-800">Tiga Pilar Audiens Target Utama:</div>
+                        <ul class="list-disc pl-4 text-slate-600 space-y-1">
+                            <li><strong>Gen Z & Milenial:</strong> Disasar melalui gerakan sosial & festival "Kejar Mimpi".</li>
+                            <li><strong>Affluent & High Net-Worth:</strong> Disasar via program edukasi investasi "Wealth Xpo".</li>
+                            <li><strong>Ekosistem Korporasi & UMKM:</strong> Disasar via platform transaksi digital OCTOBIZ & OCTO Merchant.</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900">
+                        <i class="fa-solid fa-clock-rotate-left text-amber-600 mr-1"></i>
+                        <strong>Tiga Tekanan Utama 2026:</strong> Batas waktu pemisahan (spin-off) Unit Usaha Syariah (31 Des 2026), krisis publikasi rekening judol, dan gap akselerasi penggunaan OCTO Mobile.
+                    </div>
+                </div>
+
+                <!-- Visual Charts -->
+                <div class="lg:col-span-6 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <h3 class="font-bold text-slate-900 text-sm">
+                            <i class="fa-solid fa-chart-bar text-cimb-red mr-1.5"></i>
+                            Tingkat Kesadaran Merek (Mindshare) Mobile Banking
+                        </h3>
+                        <span class="text-[10px] text-slate-400">Sumber: Top Brand Index</span>
+                    </div>
+                    <!-- Chart Canvas Container -->
+                    <div class="chart-container">
+                        <canvas id="mindshareChart"></canvas>
+                    </div>
+                    <div class="text-[11px] text-slate-500 italic text-center">
+                        *Data menunjukkan kesenjangan tajam mindshare OCTO Mobile (3,2%) dibanding pesaing utama, yang menjadi tantangan utama akuisisi organik.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 10 Current Issues Explorer -->
+        <section id="issues" class="scroll-mt-20 space-y-6">
+            <div class="border-l-4 border-amber-500 pl-4">
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-500"></i>
+                    II. Current Issues Matrix (10 Isu Strategis)
+                </h2>
+                <p class="text-slate-600 text-xs mt-1">
+                    Setiap isu telah dianalisis berdasarkan kategori, pemangku kepentingan terdampak, urgensi waktu, dan potensi dampaknya terhadap reputasi dan pertumbuhan bisnis.
+                </p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap gap-2 text-xs">
+                <button onclick="filterIssues('ALL')" id="btn-issue-ALL" class="issue-filter-btn active px-3 py-1.5 rounded-lg bg-slate-900 text-white font-medium shadow-sm border border-slate-800">
+                    Semua Isu (10)
+                </button>
+                <button onclick="filterIssues('BUSINESS')" id="btn-issue-BUSINESS" class="issue-filter-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 font-medium hover:bg-slate-100 border border-slate-200">
+                    A. Business (3)
+                </button>
+                <button onclick="filterIssues('REPUTATION')" id="btn-issue-REPUTATION" class="issue-filter-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 font-medium hover:bg-slate-100 border border-slate-200">
+                    B. Reputation (2)
+                </button>
+                <button onclick="filterIssues('COMMUNICATION')" id="btn-issue-COMMUNICATION" class="issue-filter-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 font-medium hover:bg-slate-100 border border-slate-200">
+                    C. Communication (2)
+                </button>
+                <button onclick="filterIssues('PUBLIC_PERCEPTION')" id="btn-issue-PUBLIC_PERCEPTION" class="issue-filter-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 font-medium hover:bg-slate-100 border border-slate-200">
+                    D. Public Perception (2)
+                </button>
+                <button onclick="filterIssues('STAKEHOLDER')" id="btn-issue-STAKEHOLDER" class="issue-filter-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 font-medium hover:bg-slate-100 border border-slate-200">
+                    E. Stakeholder (1)
+                </button>
+            </div>
+
+            <!-- Dynamic Issues Grid -->
+            <div id="issues-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Dynamic Content Rendered via JavaScript -->
+            </div>
+        </section>
+
+        <!-- SECTION 3: Issue Signals (Fact, Signal, Hypothesis) -->
+        <section id="signals" class="scroll-mt-20 space-y-6">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-satellite-dish text-blue-500"></i>
+                    III. Issue Signals & Intelligence Triangulation
+                </h2>
+                <p class="text-slate-600 text-xs mt-1">
+                    Pemusatan data intelijen untuk memisahkan kepastian obyektif (Fact), tren indikatif (Signal), dan hipotesis kerja yang harus divalidasi.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- FACT Column -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                            <h3 class="font-bold text-slate-900 text-sm">FACT (Fakta Terverifikasi)</h3>
+                        </div>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">4 Item</span>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">1. 1.363 Rekening Terindikasi Judol</div>
+                            <p class="text-slate-600">Rilis resmi Komdigi mencatat 1.363 rekening CIMB Niaga diblokir terkait fasilitas judol.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">2. Downtime OCTO Mobile (30 April 2026)</div>
+                            <p class="text-slate-600">Insiden Internal Server Error dikonfirmasi resmi oleh juru bicara perseroan di media.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">3. Izin Prinsip Spin-off Syariah OJK</div>
+                            <p class="text-slate-600">OJK menerbitkan izin prinsip pemisahan UUS Syariah pada 14 Jan 2026 dengan batas 31 Des 2026.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">4. Mindshare OCTO Mobile 3,20%</div>
+                            <p class="text-slate-600">Audit Top Brand Index mengonfirmasi ketertinggalan signifikan dari pesaing utama.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIGNAL Column -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                            <h3 class="font-bold text-slate-900 text-sm">SIGNAL (Indikasi & Tren)</h3>
+                        </div>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">3 Item</span>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">1. Lonjakan Keluhan di Media Konsumen</div>
+                            <p class="text-slate-600">Kemunculan keluhan terstruktur tentang tagihan fiktif & pemblokiran sepihak tanpa respons empati.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">2. Taktik "Bossman" (OCTOBIZ)</div>
+                            <p class="text-slate-600">Penggunaan aktor Reza Rahadian menandakan manajemen menyadari kaku-nya produk B2B.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">3. Konser Kejar Mimpi vs Konversi Produk</div>
+                            <p class="text-slate-600">Engagement tinggi pada acara budaya/konser, tetapi minim penyebutan produk perbankan organik.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HYPOTHESIS Column -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-purple-500"></span>
+                            <h3 class="font-bold text-slate-900 text-sm">HYPOTHESIS (Dugaan Kerja)</h3>
+                        </div>
+                        <span class="text-xs bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-semibold">2 Item</span>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">1. "Banner Blindness" Edukasi Phishing</div>
+                            <p class="text-slate-600">Format peringatan keamanan yang kaku dan repetitif membuat nasabah mengabaikan imbauan keselamatan.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                            <div class="font-bold text-slate-800">2. Skeptisisme Greenwashing ESG</div>
+                            <p class="text-slate-600">Publik menganggap klaim Rp66T Green Financing elitis karena ketiadaan bukti visual dampak lokal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Communication Gap Navigator -->
+        <section id="gaps" class="scroll-mt-20 space-y-6">
+            <div class="border-l-4 border-purple-600 pl-4">
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-bridge text-purple-600"></i>
+                    IV. Communication Gap Analysis (5 Diskoneksi Pesan)
+                </h2>
+                <p class="text-slate-600 text-xs mt-1">
+                    Membedah kesenjangan antara identitas yang diproyeksikan bank dengan persepsi riil publik beserta peluang intervensi strategis.
+                </p>
+            </div>
+
+            <!-- Interactive Gap Accordion / Tab System -->
+            <div id="gap-container" class="space-y-4">
+                <!-- JS will inject 5 Communication Gaps here -->
+            </div>
+        </section>
+
+        <!-- SECTION 5: Content Opportunities & Agency Offerings -->
+        <section id="solutions" class="scroll-mt-20 space-y-6">
+            <div class="border-l-4 border-yellow-500 pl-4">
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-yellow-500"></i>
+                    V. Content Opportunities & Agency Pitch Offerings
+                </h2>
+                <p class="text-slate-600 text-xs mt-1">
+                    10 konsep kampanye dan strategi konten inovatif yang siap dijual kepada SVP CorCom Hery Kurniawan.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="content-grid">
+                <!-- JS will render 10 content opportunities -->
+            </div>
+        </section>
+
+        <!-- SECTION 6: Audience Problem Mapping -->
+        <section id="audiences" class="scroll-mt-20 space-y-6">
+            <div class="border-l-4 border-teal-500 pl-4">
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-users text-teal-500"></i>
+                    VI. External Audience Problem Mapping
+                </h2>
+                <p class="text-slate-600 text-xs mt-1">
+                    Pemetaan 5 kelompok pemangku kepentingan kunci berdasarkan perhatian, kecemasan, dan format komunikasi terbaik.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-3" id="audience-cards">
+                <!-- Rendered by JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 7: Reputational Risk Map -->
+        <section id="risks" class="scroll-mt-20 space-y-6">
+            <div class="border-l-4 border-emerald-600 pl-4">
+                <h2 class="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-emerald-600"></i>
+                    VII. Reputational Risk Map & Matrix
+                </h2>
+                <p class="text-slate-600 text-xs mt-1">
+                    Matriks risiko korporasi 3-zona untuk memandu prioritas alokasi anggaran komunikasi krisis dan penanganan isu.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Red Zone -->
+                <div class="bg-red-50 border border-red-200 rounded-xl p-5 space-y-3">
+                    <div class="flex items-center justify-between border-b border-red-200 pb-2">
+                        <h3 class="font-bold text-red-900 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-radiation text-red-600"></i>
+                            High Impact – High Prob
+                        </h3>
+                        <span class="text-[10px] bg-red-600 text-white font-bold px-2 py-0.5 rounded">RED ZONE</span>
+                    </div>
+                    <p class="text-xs text-red-800 font-medium">Kawasan Ancaman Nyata & Berulang</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-white p-3 rounded-lg border border-red-200 shadow-sm space-y-1">
+                            <div class="font-bold text-slate-900">A. Asosiasi Judi Online</div>
+                            <p class="text-slate-600">Operasi pembersihan Komdigi yang berulang berisiko mencantumkan kembali nama bank, memicu sanksi OJK & reputasi buruk.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-red-200 shadow-sm space-y-1">
+                            <div class="font-bold text-slate-900">B. Server Downtime saat Payday</div>
+                            <p class="text-slate-600">Trafik 71% digital yang padat berisiko memicu kelumpuhan aplikasi di tanggal muda, memicu migrasi saldo massal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Black Swan Zone -->
+                <div class="bg-slate-100 border border-slate-300 rounded-xl p-5 space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-skull-crossbones text-slate-700"></i>
+                            High Impact – Low Prob
+                        </h3>
+                        <span class="text-[10px] bg-slate-800 text-white font-bold px-2 py-0.5 rounded">BLACK SWAN</span>
+                    </div>
+                    <p class="text-xs text-slate-700 font-medium">Kiamat Operasional / Bencana Sistemik</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm space-y-1">
+                            <div class="font-bold text-slate-900">C. Anomali Migrasi Spin-off Syariah</div>
+                            <p class="text-slate-600">Gagal sinkronisasi data saldo nasabah syariah saat pemisahan BUS memicu gugatan class action & bank run.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm space-y-1">
+                            <div class="font-bold text-slate-900">D. Peretasan Massal Core Banking</div>
+                            <p class="text-slate-600">Kebocoran basis data utama oleh ransomware mematikan kepercayaan pemegang saham & publik internasional.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Friction Zone -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 space-y-3">
+                    <div class="flex items-center justify-between border-b border-amber-200 pb-2">
+                        <h3 class="font-bold text-amber-900 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+                            Low Impact – High Prob
+                        </h3>
+                        <span class="text-[10px] bg-amber-600 text-white font-bold px-2 py-0.5 rounded">DAILY FRICTION</span>
+                    </div>
+                    <p class="text-xs text-amber-800 font-medium">Erosi Reputasi Berkala</p>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-white p-3 rounded-lg border border-amber-200 shadow-sm space-y-1">
+                            <div class="font-bold text-slate-900">E. Sengketa Media Konsumen</div>
+                            <p class="text-slate-600">Keluhan mingguan gagal kirim kartu atau CS bot kaku meracuni SEO Google secara permanen.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-amber-200 shadow-sm space-y-1">
+                            <div class="font-bold text-slate-900">F. Apatisme Kampanye ESG</div>
+                            <p class="text-slate-600">Konten keberlanjutan yang kaku diabaikan Gen Z, menghasilkan inefisiensi belanja CSR miliaran rupiah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: Interactive Agency Pitch Deck Builder -->
+        <section id="pitch-builder" class="scroll-mt-20 bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 text-white p-6 sm:p-8 rounded-2xl shadow-xl border border-red-900/40 space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-red-400 text-xs font-bold uppercase tracking-wider mb-1">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generator Proposal Klien
+                    </div>
+                    <h2 class="text-xl font-bold text-white tracking-tight">
+                        Interactive Pitch Deck Proposal Builder
+                    </h2>
+                    <p class="text-slate-400 text-xs mt-0.5">
+                        Pilih prioritas masalah CIMB Niaga untuk merekomendasikan paket solusi komunikasi terbaik dalam rapat bersama Hery Kurniawan.
+                    </p>
+                </div>
+                <button onclick="generateProposalDeck()" class="bg-cimb-red hover:bg-red-700 text-white px-5 py-2.5 rounded-xl font-bold text-xs shadow-lg transition flex items-center justify-center gap-2 border border-red-500/30">
+                    <i class="fa-solid fa-gears"></i>
+                    <span>Generate Executive Pitch Summary</span>
+                </button>
+            </div>
+
+            <!-- Pitch Builder Controls Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Step 1: Select Client Focus Issues -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                        1. Pilih Fokus Masalah Klien yang Ingin Diatasi:
+                    </label>
+                    <div class="space-y-2 text-xs">
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-issue-judol" class="rounded text-cimb-red focus:ring-cimb-red" checked>
+                            <span>Krisis Reputasi Judi Online & Akselerasi Trust KYC</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-issue-syariah" class="rounded text-cimb-red focus:ring-cimb-red" checked>
+                            <span>Edukasi Transisi & Change Management Spin-off Syariah (2026)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-issue-octo" class="rounded text-cimb-red focus:ring-cimb-red" checked>
+                            <span>Penetrasi Mindshare & Konversi User OCTO Mobile (3.2%)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-issue-esg" class="rounded text-cimb-red focus:ring-cimb-red">
+                            <span>Humanisasi Narasi Keuangan Berkelanjutan (ESG Greenwashing Protection)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-issue-b2b" class="rounded text-cimb-red focus:ring-cimb-red">
+                            <span>Adopsi Platform B2B OCTOBIZ untuk UMKM & Korporasi</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 2: Select Recommended Agency Services -->
+                <div class="space-y-3">
+                    <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                        2. Pilih Paket Layanan Agensi yang Ditawarkan:
+                    </label>
+                    <div class="space-y-2 text-xs">
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-service-retainer" class="rounded text-cimb-red focus:ring-cimb-red" checked>
+                            <span>Crisis & Issue Management Retainer (War Room & SEO Suppression)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-service-docu" class="rounded text-cimb-red focus:ring-cimb-red" checked>
+                            <span>Video Micro-Documentary & Storytelling Production</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-service-podcast" class="rounded text-cimb-red focus:ring-cimb-red">
+                            <span>B2B Thought Leadership Podcast ("Bossman Talks Business")</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-2.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg cursor-pointer border border-slate-700 transition">
+                            <input type="checkbox" id="pitch-service-perf" class="rounded text-cimb-red focus:ring-cimb-red" checked>
+                            <span>Performance Marketing Content & KOL Activation Funnel</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pitch Output Card -->
+            <div id="pitch-output" class="bg-slate-950 p-6 rounded-xl border border-slate-800 space-y-4">
+                <div class="text-xs text-slate-400 italic text-center">
+                    Klik tombol "Generate Executive Pitch Summary" di atas untuk menghasilkan draf ringkasan eksekutif penawaran bisnis.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <div class="font-bold text-white mb-1">CIMB Niaga Corporate Communication Intelligence App</div>
+                <p class="text-slate-500">Dirancang khusus untuk persiapan rapat strategi pendekatan bisnis klien (2025-2026).</p>
+            </div>
+            <div class="text-slate-500 text-right">
+                <div>Source Material: Laporan Analisis Intelijen CIMB Niaga</div>
+                <div class="text-[10px] text-slate-600 mt-0.5">*For informational and proposal preparation purposes only.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data Logic & Interactions -->
+    <script>
+        // Data Structure: 10 Current Issues
+        const issuesData = [
+            {
+                id: 1,
+                category: "BUSINESS",
+                title: "Tenggat Waktu Regulasi & Migrasi Spin-Off UUS Syariah",
+                stakeholders: "Direksi, OJK, Pemegang Saham, 1M+ Nasabah Syariah",
+                importance: "Batas waktu absolut OJK (31 Des 2026) tanpa opsi penundaan. Kegagalan memicu sanksi operasional & potensi bank run.",
+                impact: "CRITICAL (Rp 58,2 T Pembiayaan Syariah)",
+                horizon: "Jangka Pendek-Menengah (Puncak Q3-Q4 2026)",
+                strategicPitch: "Ajukan proyek Change Management Communication 'Syariah Tanpa Batas' untuk edukasi migrasi yang menenangkan nasabah."
+            },
+            {
+                id: 2,
+                category: "BUSINESS",
+                title: "Ketertinggalan Penetrasi & Mindshare OCTO Mobile",
+                stakeholders: "Divisi Digital Banking, Tim Marketing, Nasabah Ritel",
+                importance: "Mindshare hanya 3,20% vs BCA Mobile (50%) & BRImo (22,1%). Inefisiensi CAC & risiko kehilangan pasar Gen Z.",
+                impact: "HIGH (Erosi Pertumbuhan Dana Murah CASA)",
+                horizon: "Jangka Panjang (Kronis)",
+                strategicPitch: "Ganti kampanye awareness generik dengan Performance Marketing Content yang menghubungkan konser 'Kejar Mimpi' ke aplikasi."
+            },
+            {
+                id: 3,
+                category: "BUSINESS",
+                title: "Gesekan Adaptasi Korporasi terhadap Platform OCTOBIZ",
+                stakeholders: "Klien B2B/UMKM, Relationship Manager, Divisi Cash Management",
+                importance: "Kurva pembelajaran tinggi migrasi dari BizChannel ke OCTOBIZ memicu penolakan internal staf keuangan klien.",
+                impact: "MEDIUM (Penurunan Sementara Volume Wholesale)",
+                horizon: "Jangka Pendek (Masa Transisi)",
+                strategicPitch: "Produksi seri Podcast B2B & Video Explainer 'Bossman Talks Business' bersama Reza Rahadian."
+            },
+            {
+                id: 4,
+                category: "REPUTATION",
+                title: "Eksploitasi Rekening sebagai Sarana Judi Online (Judol)",
+                stakeholders: "Publik, Pemerintah, OJK, Komdigi, Mitra Internasional",
+                importance: "1.363 rekening teridentifikasi judol oleh Komdigi. Memicu narasi media negatif seolah bank lalai dalam KYC.",
+                impact: "CRITICAL (Erosi Kepercayaan Massal & Sanksi Regulasi)",
+                horizon: "Jangka Pendek Berulang (Krisis Kuartalan)",
+                strategicPitch: "Ajukan Crisis Retainer & Thought Leadership 'Satu Rekening, Satu Identitas' untuk memimpin narasi keunggulan AI KYC."
+            },
+            {
+                id: 5,
+                category: "REPUTATION",
+                title: "Sentimen Destruktif Organik Akibat Downtime Sistem Digital",
+                stakeholders: "Nasabah Ritel, Merchant, Tim CorCom",
+                importance: "Insiden Internal Server Error (seperti 30 April 2026) memicu histeria massal di medsos & merusak ulasan App Store.",
+                impact: "HIGH (Erosi Kepercayaan Instan)",
+                horizon: "Sporadis dengan Dampak Akumulatif",
+                strategicPitch: "Rancang strategi transparansi krisis 'OCTO Evolution' yang menampilkan dedikasi tim engineer di balik layar."
+            },
+            {
+                id: 6,
+                category: "COMMUNICATION",
+                title: "Kompleksitas Pesan Keuangan Berkelanjutan (Greenwashing Risk)",
+                stakeholders: "Nasabah Milenial Eco-conscious, Komunitas LHK, Investor",
+                importance: "Klaim Rp66 T Green Financing dikemas terlalu teknis (GRG, Basel, SLL) sehingga gagal dimengerti publik & Gen Z.",
+                impact: "MEDIUM (Hilangnya Diferensiasi Brand Hijau)",
+                horizon: "Jangka Panjang",
+                strategicPitch: "Transformasi Laporan ESG menjadi Micro-Documentary 'One House One Tree' yang humanis & sinematik."
+            },
+            {
+                id: 7,
+                category: "COMMUNICATION",
+                title: "Fragmentasi Kampanye 'Kejar Mimpi' vs Konversi Produk",
+                stakeholders: "Tim Marketing, Exec Board, Target Akuisisi Muda",
+                importance: "Konser & gerakan sosial sukses mendulang pujian, namun minim Call-to-Action (CTA) ke produk tabungan OCTO Savers.",
+                impact: "MEDIUM (Inefisiensi Belanja CSR/Marketing)",
+                horizon: "Jangka Panjang",
+                strategicPitch: "Integritas fitur 'Target Mimpimu' langsung di dalam aplikasi OCTO Mobile dengan insentif investasi otomatis."
+            },
+            {
+                id: 8,
+                category: "PUBLIC_PERCEPTION",
+                title: "Manajemen Empati Krisis Rekayasa Sosial (Phishing & Scam)",
+                stakeholders: "Korban Scam, Komunitas Pelindung Konsumen, Customer Care",
+                importance: "Nasabah merasa bank bersikap Pelepasan Tanggung Jawab (Victim Blaming) saat terjadi kebocoran OTP/phishing.",
+                impact: "HIGH (Kerusakan Reputasi di X / Media Konsumen)",
+                horizon: "Persisten & Berjangka Panjang",
+                strategicPitch: "Reformasi skrip Customer Care dengan pendekatan empati & kampanye 'Anatomi Penipuan Siber' berbasis psikologi perilaku."
+            },
+            {
+                id: 9,
+                category: "PUBLIC_PERCEPTION",
+                title: "Stigma Eksklusivitas Vertikal Wealth Management",
+                stakeholders: "Investor Ritel Rintisan, Pekerja Muda, Divisi Wealth",
+                importance: "Acara eksklusif 'Wealth Xpo' memberi impresi bahwa investasi di CIMB Niaga hanya untuk kaum elit HNWIs.",
+                impact: "MEDIUM (Hambatan Ekspansi Mass-Affluent)",
+                horizon: "Jangka Menengah",
+                strategicPitch: "Aktivasi Micro-KOL Finance untuk mengedukasi investasi reksa dana di OCTO Mobile mulai dari Rp100.000."
+            },
+            {
+                id: 10,
+                category: "STAKEHOLDER",
+                title: "Beban Kognitif Pemasok & Ekosistem Merchant",
+                stakeholders: "Pemilik UMKM, Vendor Supply Chain, Merchant EDC",
+                importance: "Literasi digital tidak merata; pemilik usaha tradisional membutuhkan pendampingan manusia ketimbang self-onboarding.",
+                impact: "MEDIUM (Hambatan Penetrasi Merchant Aggregator)",
+                horizon: "Jangka Pendek-Menengah",
+                strategicPitch: "Produksi seri naratif human-interest 'OCTO Merchant Heroes' yang memperlihatkan kemudahan transisi merchant lokal."
+            }
+        ];
+
+        // Communication Gaps Data
+        const gapsData = [
+            {
+                id: 1,
+                title: "1. Ilusi Super App vs Realitas Teknis",
+                desired: "Bank memproyeksikan OCTO Mobile sebagai super app tangguh, futuristik, & tanpa cela.",
+                actual: "Nasabah menganggap aplikasi sering lambat, 'cacat eksekusi', & rawan server error di tanggal gajian.",
+                risk: "Peningkatan churn rate; nasabah memindahkan saldo tabungan ke BCA/Mandiri.",
+                opportunity: "Membangun Issue Management transparan 'OCTO Evolution', menceritakan kerja tim engineer di balik layar."
+            },
+            {
+                id: 2,
+                title: "2. Pertahanan Benteng Keamanan vs Victim-Blaming",
+                desired: "CIMB Niaga adalah benteng siber kuat yang giat mengedukasi keamanan nasabah.",
+                actual: "Korban kejahatan siber merasa bank bersikap kaku, defensif, & menyalahkan korban yang kehilangan OTP.",
+                risk: "Amplifikasi kemarahan viral di media sosial yang merusak Trust Score institusi.",
+                opportunity: "Reformasi skrip CS berbasis empati & publikasi konten investigasi 'Survivor Stories' pencegahan scam."
+            },
+            {
+                id: 3,
+                title: "3. Klaim Laporan ESG Korporat vs Bukti Akar Rumput",
+                desired: "Pelopor finansial hijau ASEAN yang mendedikasikan kapital ratusan triliun untuk dekarbonisasi.",
+                actual: "Nasabah tidak tahu komitmen ini; laporan ratusan halaman dianggap omong kosong korporat.",
+                risk: "Hilangnya ROI komunikasi miliaran rupiah karena gagal membentuk diferensiasi brand di kalangan Gen Z.",
+                opportunity: "Jurnalisme visual mikro-dokumenter di YouTube/IG Reels mengenai penerima manfaat KPR Green Mortgage."
+            },
+            {
+                id: 4,
+                title: "4. Pahlawan Anti-Judol vs Terduga Fasilitator",
+                desired: "Bank tidak mentolerir kejahatan finansial & mematuhi regulasi anti-pencucian uang sepenuhnya.",
+                actual: "Daftar 1.363 akun terblokir membuat publik menilai kontrol KYC CIMB Niaga sangat longgar.",
+                risk: "Sanksi khusus dari OJK & bias kognitif negatif publik di ranah digital.",
+                opportunity: "Offensive PR & Thought Leadership eksekutif memamerkan kecanggihan AI Biometrik pencegah akun palsu."
+            },
+            {
+                id: 5,
+                title: "5. CSR Inspirasional vs Penjualan Silang (Cross-Selling)",
+                desired: "Program Kejar Mimpi membantu pemuda mengubah ambisi menjadi aksi nyata dengan solusi keuangan.",
+                actual: "Audiens menyukai hiburan konser Kejar Mimpi namun mengotakkannya murni sebagai murni hibah amal.",
+                risk: "Anggaran pemasaran masif gagal dikonversi menjadi akuisisi nasabah baru (New-to-Bank).",
+                opportunity: "Penyuntikan Performance Marketing dengan rekomendasi investasi otomatis di aplikasi saat konser digelar."
+            }
+        ];
+
+        // Content Opportunities Data
+        const contentData = [
+            { id: 1, tag: "ESG / Video", title: "Dokumenter Mikro 'Community Link #JadiNyata'", desc: "Video vertikal sinematik mengupas inovasi pengolahan limbah kopi & kerang binaan bank." },
+            { id: 2, tag: "B2B / Podcast", title: "Seri Podcast B2B 'Bossman Talks Business'", desc: "Mengapitalisasi Reza Rahadian membahas solusi arus kas & payroll via OCTOBIZ." },
+            { id: 3, tag: "Security / Viral", title: "Jurnalisme Investigasi 'Anatomi Penipuan Siber'", desc: "Membedah manipulasi psikologis phising bersama kreator investigasi siber." },
+            { id: 4, tag: "Syariah / Change Comms", title: "Kampanye 'Syariah Tanpa Batas'", desc: "Edu-content SEO & motion graphics menenangkan nasabah menyongsong spin-off 2026." },
+            { id: 5, tag: "Interactive / Web", title: "Gamifikasi Finansial 'Cek Suhu Keuanganmu'", desc: "Kuis interaktif pengukur kelayakan KPR/Kredit langsung terhubung ke aplikasi OCTO." },
+            { id: 6, tag: "PR / Transparency", title: "Dokumenter Di Balik Layar 'OCTO Evolution'", desc: "Menampilkan dedikasi engineer menjaga server 24/7 untuk meredam sentimen downtime." },
+            { id: 7, tag: "Thought Leadership", title: "Kampanye Anti-Judol 'Satu Rekening, Satu Identitas'", desc: "Op-Ed & video eksekutif membedah teknologi biometrik bank melibas akun penampung." },
+            { id: 8, tag: "ESG / Storytelling", title: "Dokumenter Hijau 'Satu Rumah, Satu Pohon'", desc: "Split-screen story: Penerima KPR Green Mortgage & Petani penanam bibit pohon." },
+            { id: 9, tag: "Wealth / Micro-KOL", title: "Kolaborasi Edukasi 'Micro-Wealth Management'", desc: "Micro-KOL memperlihatkan kemudahan investasi reksa dana Rp100rb di aplikasi OCTO." },
+            { id: 10, tag: "UMKM / Human Interest", title: "Testimoni Akar Rumput 'OCTO Merchant Heroes'", desc: "Kisah inspiratif pemilik kedai pasar tradisional yang melipatgandakan omzet via EDC OCTO." }
+        ];
+
+        // Audience Data
+        const audienceData = [
+            {
+                name: "1. Milenial & Gen Z",
+                care: "UI/UX simpel, BI-Fast instan, cashback, & investasi tanpa repot.",
+                perception: "Kejar Mimpi keren, tapi aplikasi OCTO terasa berat & rawan error.",
+                concern: "Takut saldo tersangkut saat server down di jam sibuk.",
+                message: "OCTO Evolution: Lebih cepat, ringan, & siap mendukung mimpimu.",
+                format: "Video Vertikal Reels/TikTok, Push Notification Interaktif."
+            },
+            {
+                name: "2. Bendahara B2B & UMKM",
+                care: "Manajemen likuiditas, valas tanpa konversi ganda, transfer payroll cepat.",
+                perception: "Sudah terbiasa dengan BizChannel, ragu pindah ke OCTOBIZ.",
+                concern: "Migrasi memicu kesalahan input staf akuntansi & menghambat bisnis.",
+                message: "OCTOBIZ semudah smartphone harianmu, aman dengan log biometrik.",
+                format: "Webinar LinkedIn, Video Explainer Animasi, Panduan Step-by-Step."
+            },
+            {
+                name: "3. Nasabah Syariah",
+                care: "Kepatuhan Fatwa DSN-MUI, kemudahan ZISWAF, kepastian nilai moral.",
+                perception: "Layanan syariah bagus, tapi bingung mengapa ada isu spin-off bank.",
+                concern: "Takut terjadi pemotongan saldo atau perubahan nomor rekening.",
+                message: "Bentuk baru, murni syariah. Pemisahan BUS memperkuat perlindungan dana Anda.",
+                format: "Surat Personal Direksi (e-DM), Motion Graphic Edukasi."
+            },
+            {
+                name: "4. Regulator (OJK & Komdigi)",
+                care: "Kepatuhan Anti-Pencucian Uang, pembasmian judol, kecukupan modal CAR.",
+                perception: "Laba tinggi, tapi terindikasi 1.363 rekening penampung judol.",
+                concern: "Bank dianggap kurang proaktif memberantas jaringan kriminal siber.",
+                message: "CIMB Niaga memimpin inovasi AI Biometrik bersama penegak hukum.",
+                format: "Executive Whitepaper, Op-Ed Media Ekonomi, Executive Briefing."
+            },
+            {
+                name: "5. Korban Peretasan Scam",
+                care: "Pengembalian dana, penghentian tagihan fiktif, empati dari CS.",
+                perception: "CS seperti robot, menyalahkan korban karena kebobolan OTP.",
+                concern: "Tabungan hilang tak berbekas tanpa perlindungan institusi.",
+                message: "Kami berada di pihak Anda untuk menyelidiki dan memblokir penipu.",
+                format: "Jalur Pesan Khusus Escalation, Respon Manajemen Krisis Humanis."
+            }
+        ];
+
+        // DOM Initialization Functions
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMindshareChart();
+            renderIssues('ALL');
+            renderGaps();
+            renderContentOpportunities();
+            renderAudiences();
+        });
+
+        // Chart.js Render: Mindshare Bar Chart
+        function renderMindshareChart() {
+            const ctx = document.getElementById('mindshareChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['BCA Mobile', 'BRImo', 'Livin by Mandiri', 'OCTO Mobile (CIMB)', 'Pesaing Lain'],
+                    datasets: [{
+                        label: 'Top Brand Mindshare Index (%)',
+                        data: [50.0, 22.1, 9.0, 3.2, 15.7],
+                        backgroundColor: [
+                            '#1e3a8a',
+                            '#0284c7',
+                            '#d97706',
+                            '#8B0000', // CIMB Red
+                            '#94a3b8'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + '% Pangsa Merek (Mindshare)';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 60,
+                            ticks: {
+                                callback: function(value) { return value + '%'; }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                callback: function(val, index) {
+                                    let label = this.getLabelForValue(index);
+                                    return label.length > 16 ? label.substr(0, 16) + '...' : label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Render Filterable Issues
+        function renderIssues(category) {
+            const grid = document.getElementById('issues-grid');
+            grid.innerHTML = '';
+
+            const filtered = category === 'ALL' 
+                ? issuesData 
+                : issuesData.filter(i => i.category === category);
+
+            filtered.forEach(issue => {
+                const badgeColor = {
+                    'BUSINESS': 'bg-blue-100 text-blue-800 border-blue-200',
+                    'REPUTATION': 'bg-red-100 text-red-800 border-red-200',
+                    'COMMUNICATION': 'bg-purple-100 text-purple-800 border-purple-200',
+                    'PUBLIC_PERCEPTION': 'bg-amber-100 text-amber-800 border-amber-200',
+                    'STAKEHOLDER': 'bg-teal-100 text-teal-800 border-teal-200'
+                }[issue.category];
+
+                const cardHtml = `
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition space-y-3">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${badgeColor}">
+                                ${issue.category}
+                            </span>
+                            <span class="text-[10px] font-medium text-slate-400">
+                                <i class="fa-regular fa-clock mr-1"></i>${issue.horizon}
+                            </span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm leading-snug">
+                            ${issue.id}. ${issue.title}
+                        </h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            <strong>Masalah:</strong> ${issue.importance}
+                        </p>
+                        <div class="pt-2 border-t border-slate-100 text-xs space-y-1">
+                            <div class="text-slate-500"><strong>Stakeholder:</strong> ${issue.stakeholders}</div>
+                            <div class="text-slate-500"><strong>Potensi Dampak:</strong> <span class="text-red-700 font-semibold">${issue.impact}</span></div>
+                        </div>
+                        <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-xs text-slate-800">
+                            <i class="fa-solid fa-bullhorn text-cimb-red mr-1.5"></i>
+                            <strong>Peluang Pitch Agensi:</strong> ${issue.strategicPitch}
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        function filterIssues(cat) {
+            document.querySelectorAll('.issue-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+            const activeBtn = document.getElementById(`btn-issue-${cat}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700');
+                activeBtn.classList.add('bg-slate-900', 'text-white');
+            }
+            renderIssues(cat);
+        }
+
+        // Render Communication Gaps
+        function renderGaps() {
+            const container = document.getElementById('gap-container');
+            container.innerHTML = '';
+
+            gapsData.forEach(gap => {
+                const gapHtml = `
+                    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="p-4 bg-slate-100 border-b border-slate-200 font-bold text-slate-900 text-sm flex items-center justify-between">
+                            <span>${gap.title}</span>
+                            <span class="text-xs text-purple-700 font-medium"><i class="fa-solid fa-arrows-split-up-and-left mr-1"></i>Gap Model</span>
+                        </div>
+                        <div class="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                            <div class="bg-blue-50/60 p-3 rounded-lg border border-blue-100">
+                                <div class="font-bold text-blue-900 mb-1"><i class="fa-solid fa-bullseye mr-1"></i>Desired Perception</div>
+                                <p class="text-slate-700">${gap.desired}</p>
+                            </div>
+                            <div class="bg-amber-50/60 p-3 rounded-lg border border-amber-100">
+                                <div class="font-bold text-amber-900 mb-1"><i class="fa-solid fa-eye mr-1"></i>Actual Perception</div>
+                                <p class="text-slate-700">${gap.actual}</p>
+                            </div>
+                            <div class="bg-red-50/60 p-3 rounded-lg border border-red-100">
+                                <div class="font-bold text-red-900 mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Business Risk</div>
+                                <p class="text-slate-700">${gap.risk}</p>
+                            </div>
+                            <div class="bg-emerald-50/60 p-3 rounded-lg border border-emerald-100">
+                                <div class="font-bold text-emerald-900 mb-1"><i class="fa-solid fa-lightbulb mr-1"></i>Communication Opportunity</div>
+                                <p class="text-slate-700">${gap.opportunity}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += gapHtml;
+            });
+        }
+
+        // Render Content Opportunities
+        function renderContentOpportunities() {
+            const grid = document.getElementById('content-grid');
+            grid.innerHTML = '';
+
+            contentData.forEach(item => {
+                const card = `
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-yellow-400 transition space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">
+                                ${item.tag}
+                            </span>
+                            <span class="text-[10px] text-slate-400">Peluang Solusi #${item.id}</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm">${item.title}</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">${item.desc}</p>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        // Render Audiences
+        function renderAudiences() {
+            const grid = document.getElementById('audience-cards');
+            grid.innerHTML = '';
+
+            audienceData.forEach(aud => {
+                const card = `
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-3 text-xs">
+                        <div class="font-bold text-slate-900 border-b border-slate-100 pb-2 text-sm text-cimb-red">
+                            ${aud.name}
+                        </div>
+                        <div>
+                            <strong class="text-slate-700 block mb-0.5">Focus:</strong>
+                            <span class="text-slate-600">${aud.care}</span>
+                        </div>
+                        <div>
+                            <strong class="text-slate-700 block mb-0.5">Persepsi Saat Ini:</strong>
+                            <span class="text-slate-600">${aud.perception}</span>
+                        </div>
+                        <div>
+                            <strong class="text-slate-700 block mb-0.5">Kecemasan:</strong>
+                            <span class="text-red-600">${aud.concern}</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded border border-slate-200">
+                            <strong class="text-slate-800 block mb-0.5">Pesan Yang Dibutuhkan:</strong>
+                            <span class="text-slate-700 italic font-medium">"${aud.message}"</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500">
+                            <strong>Format Terbaik:</strong> ${aud.format}
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        // Proposal Generator Logic
+        function generateProposalDeck() {
+            const issueJudol = document.getElementById('pitch-issue-judol').checked;
+            const issueSyariah = document.getElementById('pitch-issue-syariah').checked;
+            const issueOcto = document.getElementById('pitch-issue-octo').checked;
+            const issueEsg = document.getElementById('pitch-issue-esg').checked;
+            const issueB2b = document.getElementById('pitch-issue-b2b').checked;
+
+            const servRetainer = document.getElementById('pitch-service-retainer').checked;
+            const servDocu = document.getElementById('pitch-service-docu').checked;
+            const servPodcast = document.getElementById('pitch-service-podcast').checked;
+            const servPerf = document.getElementById('pitch-service-perf').checked;
+
+            const outputDiv = document.getElementById('pitch-output');
+
+            let selectedPillars = [];
+            if (issueJudol) selectedPillars.push("Pemberantasan Rekening Judol & Penangkalan Isu Siber");
+            if (issueSyariah) selectedPillars.push("Change Management Spin-off UUS Syariah 2026");
+            if (issueOcto) selectedPillars.push("Peningkatan Mindshare & Konversi OCTO Mobile (3.2%)");
+            if (issueEsg) selectedPillars.push("Humanisasi Narasi ESG & Green Financing Rp66T");
+            if (issueB2b) selectedPillars.push("Akstrasi Penetrasi B2B Platform OCTOBIZ");
+
+            let selectedServices = [];
+            if (servRetainer) selectedServices.push("Crisis & Issue Management Retainer + SEO Suppression War-Room");
+            if (servDocu) selectedServices.push("Seri Video Micro-Documentary ('One House One Tree' & 'Community Link')");
+            if (servPodcast) selectedServices.push("Podcast B2B Thought Leadership ('Bossman Talks Business')");
+            if (servPerf) selectedServices.push("Performance Content & Activation Funnel Integrasi 'Kejar Mimpi'");
+
+            if (selectedPillars.length === 0) {
+                outputDiv.innerHTML = `<div class="text-amber-400 text-xs font-semibold">Harap pilih minimal satu fokus masalah klien di atas.</div>`;
+                return;
+            }
+
+            outputDiv.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <div class="font-bold text-red-400 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-file-contract"></i>
+                            EXECUTIVE PITCH SUMMARY FOR HERY KURNIAWAN (SVP CORCOM)
+                        </div>
+                        <span class="text-[10px] bg-red-900/60 text-red-200 px-2 py-0.5 rounded font-mono">CONFIDENTIAL PROPOSAL DRAFT</span>
+                    </div>
+
+                    <div class="space-y-2 text-xs text-slate-300">
+                        <p class="leading-relaxed">
+                            <strong>Core Pitch Narrative:</strong> "Bapak Hery, komunikasi korporat CIMB Niaga saat ini harus melompat dari reputasi murni menjadi <strong>Penggerak Dampak Konversi Bisnis Terukur</strong>. Kami hadir untuk membantu CIMB Niaga menavigasi 3 titik kritis 2026: melindungi reputasi dari isu judi online, mengawal migrasi Syariah tanpa riak publik, dan mendongkrak mindshare OCTO Mobile dari 3,2% ke level kompetitif."
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <div class="font-bold text-white mb-1.5 text-[11px] text-red-300">Pilar Masalah Utama Yang Ditangani:</div>
+                                <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-300">
+                                    ${selectedPillars.map(p => `<li>${p}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <div class="font-bold text-white mb-1.5 text-[11px] text-emerald-300">Rekomendasi Lingkup Kerja Agensi (Scope of Work):</div>
+                                <ul class="list-disc pl-4 space-y-1 text-[11px] text-slate-300">
+                                    ${selectedServices.map(s => `<li>${s}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-950/40 p-3 rounded-lg border border-red-900/50 text-[11px] text-slate-200 flex items-start gap-2 mt-2">
+                            <i class="fa-solid fa-chart-line text-red-400 mt-0.5"></i>
+                            <div>
+                                <strong>Target ROI Komunikasi:</strong> Mengubah 71% arus digital menjadi persepsi kepemimpinan merek, menekan 90% sentimen negatif seputar scam/downtime di media konsumen, dan mengonversi audiens konser 'Kejar Mimpi' menjadi pengguna aktif OCTO Savers.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
